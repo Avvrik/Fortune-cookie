@@ -1,0 +1,27 @@
+<svg width="400" height="400" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="cookieGradient4" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#D2691E;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8B4513;stop-opacity:1" />
+    </radialGradient>
+  </defs>
+  
+  <!-- Cookie background -->
+  <ellipse cx="200" cy="200" rx="180" ry="120" fill="url(#cookieGradient4)" stroke="#654321" stroke-width="4"/>
+  
+  <!-- Fortune text -->
+  <text x="200" y="180" text-anchor="middle" font-family="serif" font-size="20" font-weight="bold" fill="#FFFFFF">
+    <tspan x="200" dy="0">Sorry not sorry,</tspan>
+    <tspan x="200" dy="30">your trades</tspan>
+    <tspan x="200" dy="30">are trash</tspan>
+  </text>
+  
+  <!-- Frown face -->
+  <g fill="#8B4513">
+    <!-- Eyes -->
+    <circle cx="170" cy="140" r="8"/>
+    <circle cx="230" cy="140" r="8"/>
+    <!-- Sad mouth -->
+    <path d="M 170 250 Q 200 220 230 250" stroke="#8B4513" stroke-width="6" fill="none"/>
+  </g>
+</svg>

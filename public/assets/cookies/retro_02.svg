@@ -1,0 +1,32 @@
+<svg width="400" height="400" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="cookieGradient7" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#F5DEB3;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#DEB887;stop-opacity:1" />
+    </radialGradient>
+    <pattern id="stripes" patternUnits="userSpaceOnUse" width="40" height="10">
+      <rect width="40" height="5" fill="#8B4513" opacity="0.2"/>
+    </pattern>
+  </defs>
+  
+  <!-- Cookie background -->
+  <ellipse cx="200" cy="200" rx="180" ry="120" fill="url(#cookieGradient7)" stroke="#8B4513" stroke-width="4"/>
+  
+  <!-- Stripe pattern -->
+  <ellipse cx="200" cy="200" rx="170" ry="110" fill="url(#stripes)"/>
+  
+  <!-- Fortune text -->
+  <text x="200" y="180" text-anchor="middle" font-family="serif" font-size="20" font-weight="bold" fill="#8B4513">
+    <tspan x="200" dy="0">Your exit strategy</tspan>
+    <tspan x="200" dy="30">is HODL until</tspan>
+    <tspan x="200" dy="30">you die</tspan>
+  </text>
+  
+  <!-- Retro corner decorations -->
+  <g fill="#32CD32" opacity="0.6">
+    <polygon points="100,100 120,100 110,120" />
+    <polygon points="300,100 280,100 290,120" />
+    <polygon points="100,300 120,300 110,280" />
+    <polygon points="300,300 280,300 290,280" />
+  </g>
+</svg>
