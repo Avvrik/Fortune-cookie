@@ -52,11 +52,11 @@ export async function POST(request: NextRequest) {
     const shareUrl = `${process.env.NEXT_PUBLIC_APP_URL}/f/${slug}`
 
     // Get client info
-    const ip = request.ip || request.headers.get('x-forwarded-for') || 'unknown'
+    const ip = request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip') || 'unknown'
     const userAgent = request.headers.get('user-agent') || 'unknown'
 
     // Create fortune record
-    const fortune = await createFortune({
+    await createFortune({
       slug,
       handle: normalizedHandle,
       image_id: image.id,

@@ -78,8 +78,7 @@ export default function Home() {
         throw new Error('Clipboard image write not supported')
       }
       // Safari/Chromium need ClipboardItem
-      // @ts-ignore
-      if (typeof window.ClipboardItem === 'undefined') {
+      if (typeof (window as { ClipboardItem?: typeof ClipboardItem }).ClipboardItem === 'undefined') {
         throw new Error('ClipboardItem not supported')
       }
 
@@ -112,8 +111,7 @@ export default function Home() {
       }
 
       // 4) Write image to clipboard
-      // @ts-ignore
-      const item = new ClipboardItem({ [blob.type || 'image/png']: blob })
+      const item = new (window as { ClipboardItem: typeof ClipboardItem }).ClipboardItem({ [blob.type || 'image/png']: blob })
       await navigator.clipboard.write([item])
 
       console.log('✅ Image copied to clipboard!')
@@ -192,7 +190,7 @@ export default function Home() {
               {/* Text Section - Top */}
               <div className="flex flex-col gap-2 text-center">
                 <h2 className="text-xl leading-tight font-display font-bold text-gray-900">
-                  @{handle}'s fortune is ready!
+                  @{handle}&apos;s fortune is ready!
                 </h2>
               </div>
 

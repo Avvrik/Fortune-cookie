@@ -36,8 +36,7 @@ export default function SharePageClient({ fortune }: Props) {
         throw new Error('Clipboard image write not supported')
       }
       // Safari/Chromium need ClipboardItem
-      // @ts-ignore
-      if (typeof window.ClipboardItem === 'undefined') {
+      if (typeof (window as { ClipboardItem?: typeof ClipboardItem }).ClipboardItem === 'undefined') {
         throw new Error('ClipboardItem not supported')
       }
 
@@ -70,8 +69,7 @@ export default function SharePageClient({ fortune }: Props) {
       }
 
       // 4) Write image to clipboard
-      // @ts-ignore
-      const item = new ClipboardItem({ [blob.type || 'image/png']: blob })
+      const item = new (window as { ClipboardItem: typeof ClipboardItem }).ClipboardItem({ [blob.type || 'image/png']: blob })
       await navigator.clipboard.write([item])
 
       console.log('✅ Image copied to clipboard!')
@@ -133,7 +131,7 @@ export default function SharePageClient({ fortune }: Props) {
         {/* Header */}
         <div className="text-center mb-6">
           <h1 className="text-3xl font-display font-bold text-white mb-2">
-            @{fortune.handle}'s Fortune 🥠
+            @{fortune.handle}&apos;s Fortune 🥠
           </h1>
         </div>
 
