@@ -3,7 +3,7 @@
 
 export const config = {
   // Production domain - update this when deploying to a new domain
-  productionDomain: 'https://fortune-cookie-umber.vercel.app',
+  productionDomain: 'https://cookie.neonevm.org',
   
   // Development domain - used for local development
   developmentDomain: 'http://localhost:3003',
