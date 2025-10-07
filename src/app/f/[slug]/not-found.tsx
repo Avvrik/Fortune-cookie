@@ -13,7 +13,7 @@ export default function NotFound() {
             href="/"
             className="inline-block py-3 px-6 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold rounded-lg transition-all duration-200"
           >
-            Get Your Own Fortune
+            Draw another
           </Link>
         </div>
         

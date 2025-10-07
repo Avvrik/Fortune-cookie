@@ -182,7 +182,7 @@ export default function Home() {
                     Generating...
                   </div>
                 ) : (
-                  'Check'
+                  'Draw'
                 )}
               </button>
             </form>
