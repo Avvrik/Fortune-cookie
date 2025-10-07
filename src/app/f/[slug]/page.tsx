@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { getFortuneBySlug, logEvent } from '@/lib/supabase'
+import { getAppUrl, social, app } from '@/lib/config'
 import SharePageClient from './SharePageClient'
 
 interface Props {
@@ -18,17 +19,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   const handle = fortune.handle
-  const base = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3003' // not 3002
+  // Use centralized configuration for domain
+  const base = getAppUrl()
   const imageUrl = fortune.image_url.startsWith('http')
     ? fortune.image_url
     : new URL(fortune.image_url, base).toString()
 
   return {
-    title: 'Your Mean Crypto Fortune',
-    description: `@${handle} pulled a savage cookie. Want yours?`,
+    title: `@${handle}'s ${app.name}`,
+    description: `@${handle} got fortune slapped by ${social.twitter.site}. Want your own savage crypto fortune?`,
     openGraph: {
-      title: 'Your Mean Crypto Fortune',
-      description: `@${handle} pulled a savage cookie. Want yours?`,
+      title: `@${handle}'s ${app.name}`,
+      description: `@${handle} got fortune slapped by ${social.twitter.site}. Want your own savage crypto fortune?`,
       images: [
         {
           url: imageUrl,
@@ -38,12 +40,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         },
       ],
       type: 'website',
+      url: `${base}/f/${slug}`,
     },
     twitter: {
       card: 'summary_large_image',
-      site: '@Neon_EVM',
-      title: 'Your Mean Crypto Fortune',
-      description: `@${handle} pulled a savage cookie. Want yours?`,
+      site: social.twitter.site,
+      creator: social.twitter.creator,
+      title: `@${handle}'s ${app.name}`,
+      description: `@${handle} got fortune slapped by ${social.twitter.site}. Want your own savage crypto fortune?`,
       images: [imageUrl],
     },
   }

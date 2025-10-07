@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { nanoid } from 'nanoid'
 import { getRandomImage, createFortune, logEvent } from '@/lib/supabase'
+import { getAppUrl } from '@/lib/config'
 
 // Validate and normalize Twitter handle
 function validateHandle(handle: string): string | null {
@@ -49,7 +50,7 @@ export async function POST(request: NextRequest) {
 
     // Generate unique slug
     const slug = nanoid(6)
-    const shareUrl = `${process.env.NEXT_PUBLIC_APP_URL}/f/${slug}`
+    const shareUrl = `${getAppUrl()}/f/${slug}`
 
     // Get client info
     const ip = request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip') || 'unknown'

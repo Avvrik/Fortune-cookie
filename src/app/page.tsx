@@ -2,6 +2,7 @@
 
 import { useState, useRef } from 'react'
 import { useRouter } from 'next/navigation'
+import { social } from '@/lib/config'
 
 interface FortuneResponse {
   slug: string
@@ -55,7 +56,7 @@ export default function Home() {
 
   const handleShare = () => {
     if (fortune) {
-      const tweetText = `got fortune slapped by @Neon_EVM`
+      const tweetText = `got fortune slapped by ${social.twitter.site}`
       const shareUrl = encodeURIComponent(fortune.shareUrl)
       const text = encodeURIComponent(tweetText)
       

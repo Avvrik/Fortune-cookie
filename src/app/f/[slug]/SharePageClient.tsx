@@ -3,6 +3,7 @@
 import { useState, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import { Fortune } from '@/lib/supabase'
+import { social } from '@/lib/config'
 
 interface Props {
   fortune: Fortune
@@ -16,7 +17,7 @@ export default function SharePageClient({ fortune }: Props) {
   const router = useRouter()
 
   const handleShare = () => {
-    const tweetText = `got fortune slapped by @Neon_EVM`
+    const tweetText = `got fortune slapped by ${social.twitter.site}`
     const shareUrl = encodeURIComponent(fortune.share_url)
     const text = encodeURIComponent(tweetText)
     
