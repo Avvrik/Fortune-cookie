@@ -8,7 +8,8 @@ interface Props {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const fortune = await getFortuneBySlug(params.slug)
+  const { slug } = await params
+  const fortune = await getFortuneBySlug(slug)
 
   if (!fortune) {
     return {
@@ -17,9 +18,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   const handle = fortune.handle
-  const imageUrl = fortune.image_url.startsWith('http') 
-    ? fortune.image_url 
-    : `${process.env.NEXT_PUBLIC_APP_URL}${fortune.image_url}`
+  const base = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3003' // not 3002
+  const imageUrl = fortune.image_url.startsWith('http')
+    ? fortune.image_url
+    : new URL(fortune.image_url, base).toString()
 
   return {
     title: 'Your Mean Crypto Fortune',
@@ -48,7 +50,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function SharePage({ params }: Props) {
-  const fortune = await getFortuneBySlug(params.slug)
+  const { slug } = await params
+  const fortune = await getFortuneBySlug(slug)
 
   if (!fortune) {
     notFound()
@@ -57,7 +60,7 @@ export default async function SharePage({ params }: Props) {
   // Log the view event
   await logEvent({
     type: 'view',
-    fortune_slug: params.slug,
+    fortune_slug: slug,
     handle: fortune.handle,
   })
 
